@@ -1290,6 +1290,7 @@ class ConfigurableTask(Task):
             # TODO use keyword arguments to the metric?
             # gold, pred, norm stuff, the original lls,
             result_dict = {
+                **({"perplexity": (gold, lls)} if "perplexity" in use_metric else {}),
                 **({"acc": acc} if "acc" in use_metric else {}),
                 **({"f1": (gold, pred)} if "f1" in use_metric else {}),
                 **({"mcc": (gold, pred)} if "mcc" in use_metric else {}),
